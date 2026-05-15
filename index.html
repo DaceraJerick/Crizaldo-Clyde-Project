@@ -131,8 +131,14 @@
         }
 
         .nav-link:hover, .nav-link.active {
+            color: #059669;
+            background: #e1f5ef;
+            font-weight: 700;
+        }
+
+        .dark .nav-link:hover, .dark .nav-link.active {
+            background: rgba(16, 185, 129, 0.2);
             color: var(--accent1);
-            background: rgba(16, 185, 129, 0.1);
         }
 
         .nav-link.logout-link {
@@ -1357,12 +1363,12 @@
         
         <div class="header-right">
             <nav class="header-nav">
-                <a href="#hero" class="nav-link active" id="navHome">Home</a>
-                <a href="#" class="nav-link" onclick="showActivity('act1')">HTML</a>
-                <a href="#" class="nav-link" onclick="showActivity('act6')">CSS</a>
-                <a href="#" class="nav-link" onclick="showActivity('act11')">Database</a>
-                <a href="#" class="nav-link" onclick="showActivity('act12')">Members</a>
-                <a href="#" class="nav-link logout-link" onclick="logout()">Logout</a>
+                <a href="javascript:void(0)" class="nav-link active" id="navHome" onclick="showHome()">Home</a>
+                <a href="javascript:void(0)" class="nav-link" id="navHtml" onclick="showActivity('act1')">HTML</a>
+                <a href="javascript:void(0)" class="nav-link" id="navCss" onclick="showActivity('act6')">CSS</a>
+                <a href="javascript:void(0)" class="nav-link" id="navDb" onclick="showActivity('act11')">Database</a>
+                <a href="javascript:void(0)" class="nav-link" id="navMembers" onclick="showActivity('act12')">Members</a>
+                <a href="javascript:void(0)" class="nav-link logout-link" onclick="logout()">Logout</a>
             </nav>
 
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
@@ -3323,6 +3329,10 @@
             cursor: pointer;
         }
 
+        .lightbox-close:hover {
+            color: #ccc;
+        }
+
         @keyframes zoom {
             from { transform: scale(0.7); opacity: 0; }
             to { transform: scale(1); opacity: 1; }
@@ -3366,27 +3376,64 @@
             });
         });
 
-        function showActivity(sectionId) {
-            document.getElementById('cards').style.display = 'none';
-            document.querySelectorAll('.activity-section').forEach(s => s.classList.remove('active'));
-            const target = document.getElementById(sectionId);
-            if (target) {
-                target.classList.add('active');
-                setTimeout(() => {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }, 100);
+        window.showActivity = (id) => {
+            const section = document.getElementById(id);
+            if (section) {
+                // Hide home sections
+                const hero = document.getElementById('hero');
+                const cards = document.getElementById('cards');
+                if (hero) hero.style.display = 'none';
+                if (cards) cards.style.display = 'none';
+
+                // Hide all other activities
+                document.querySelectorAll('.activity-section').forEach(s => {
+                    s.style.display = 'none';
+                });
+
+                // Show selected
+                section.style.display = 'block';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+
+                // Update active nav link
+                updateActiveNav(id);
             }
+        };
 
-            document.querySelectorAll('.nav-link').forEach(h => h.classList.remove('active'));
-            const navLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
-            if (navLink) navLink.classList.add('active');
-        }
+        window.showHome = () => {
+            // Show home sections
+            const hero = document.getElementById('hero');
+            const cards = document.getElementById('cards');
+            if (hero) hero.style.display = 'block';
+            if (cards) cards.style.display = 'block';
 
-        function showHome() {
-            document.getElementById('cards').style.display = 'block';
-            document.querySelectorAll('.activity-section').forEach(s => s.classList.remove('active'));
-            document.querySelectorAll('.nav-link').forEach(h => h.classList.remove('active'));
-            document.getElementById('navHome').classList.add('active');
+            // Hide all activities
+            document.querySelectorAll('.activity-section').forEach(s => {
+                s.style.display = 'none';
+            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Update active nav link
+            updateActiveNav('home');
+        };
+
+        function updateActiveNav(id) {
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+
+            if (id === 'home') {
+                document.getElementById('navHome').classList.add('active');
+            } else if (id.startsWith('act')) {
+                const num = parseInt(id.replace('act', ''));
+                let navId = '';
+                if (num <= 5) navId = 'navHtml';
+                else if (num <= 10) navId = 'navCss';
+                else if (num === 11) navId = 'navDb';
+                else if (num === 12) navId = 'navMembers';
+
+                const targetLink = document.getElementById(navId);
+                if (targetLink) targetLink.classList.add('active');
+            }
         }
 
         function copyCode(btn) {
