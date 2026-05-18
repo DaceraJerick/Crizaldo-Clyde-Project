@@ -10,14 +10,14 @@
         rel="stylesheet" />
     <style>
         :root {
-            --bg: #ffffff;
-            --text: #000000;
-            --muted: #52525b;
-            --accent1: #000000;
-            --accent2: #18181b;
-            --card-bg: #ffffff;
-            --card-border: #000000;
-            --shadow-color: #000000;
+            --bg: #000000;
+            --text: #ffffff;
+            --muted: #a1a1aa;
+            --accent1: #ffffff;
+            --accent2: #f4f4f5;
+            --card-bg: #000000;
+            --card-border: #ffffff;
+            --shadow-color: #ffffff;
             --shadow-offset: 6px;
         }
 
@@ -52,8 +52,8 @@
             min-height: 100vh;
             background-color: var(--bg);
             background-image: 
-                radial-gradient(rgba(0,0,0,0.06) 1.5px, transparent 1.5px),
-                radial-gradient(rgba(0,0,0,0.06) 1.5px, transparent 1.5px);
+                radial-gradient(rgba(255,255,255,0.08) 1.5px, transparent 1.5px),
+                radial-gradient(rgba(255,255,255,0.08) 1.5px, transparent 1.5px);
             background-size: 24px 24px;
             background-position: 0 0, 12px 12px;
             background-attachment: fixed;
@@ -162,6 +162,7 @@
         }
 
         .theme-toggle {
+            display: none !important;
             width: 40px;
             height: 40px;
             background: var(--bg);
