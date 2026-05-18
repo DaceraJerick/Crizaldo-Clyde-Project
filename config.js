@@ -1,7 +1,7 @@
 // Supabase Configuration
 const CONFIG = {
-    SUPABASE_URL: 'https://bwtbjnccddkkiclzmckh.supabase.co',
-    SUPABASE_ANON_KEY: 'sb_publishable_1foBsXScFQ1edT89Qd4xuw_4ImuIHgO'
+    SUPABASE_URL: 'https://gdwpefvkcywbcgqllrjm.supabase.co',
+    SUPABASE_ANON_KEY: 'sb_publishable_DEm1FMeV2KqkJ7oIDsbm2g_0ypxDScH'
 };
 
 export default CONFIG;
