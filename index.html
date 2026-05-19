@@ -4,33 +4,40 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Crizaldo Nozal AJ | Web Dev Portfolio</title>
+    <title>Joyce Delmoro | Web Dev Portfolio</title>
+    <meta name="description" content="Joyce Delmoro's Web Development Portfolio — Activities 1–5.">
     <link
-        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap"
         rel="stylesheet" />
     <style>
         :root {
-            --bg: #000000;
-            --text: #ffffff;
-            --muted: #a1a1aa;
-            --accent1: #ffffff;
-            --accent2: #f4f4f5;
-            --card-bg: #000000;
-            --card-border: #ffffff;
-            --shadow-color: #ffffff;
-            --shadow-offset: 6px;
+            --bg:           #2e1a2e;
+            --bg-alt:       #3b1f3b;
+            --text:         #f0d0e8;
+            --muted:        #c099b8;
+            --accent1:      #e87eb8;
+            --accent2:      #b06a8e;
+            --card-bg:      #3a1e3a;
+            --card-border:  rgba(200,120,170,0.28);
+            --shadow-color: rgba(0,0,0,0.45);
+            --shadow-offset: 0px;
+            --tag-bg:       rgba(200,120,170,0.15);
+            --tag-border:   rgba(200,120,170,0.35);
         }
 
         .dark {
-            --bg: #000000;
-            --text: #ffffff;
-            --muted: #a1a1aa;
-            --accent1: #ffffff;
-            --accent2: #f4f4f5;
-            --card-bg: #000000;
-            --card-border: #ffffff;
-            --shadow-color: #ffffff;
-            --shadow-offset: 6px;
+            --bg:           #2e1a2e;
+            --bg-alt:       #3b1f3b;
+            --text:         #f0d0e8;
+            --muted:        #c099b8;
+            --accent1:      #e87eb8;
+            --accent2:      #b06a8e;
+            --card-bg:      #3a1e3a;
+            --card-border:  rgba(200,120,170,0.28);
+            --shadow-color: rgba(0,0,0,0.45);
+            --shadow-offset: 0px;
+            --tag-bg:       rgba(200,120,170,0.15);
+            --tag-border:   rgba(200,120,170,0.35);
         }
 
         *,
@@ -47,24 +54,18 @@
         }
 
         body {
-            font-family: 'DM Sans', sans-serif;
+            font-family: 'Outfit', sans-serif;
             color: var(--text);
             min-height: 100vh;
             background-color: var(--bg);
-            background-image: 
-                radial-gradient(rgba(255,255,255,0.08) 1.5px, transparent 1.5px),
-                radial-gradient(rgba(255,255,255,0.08) 1.5px, transparent 1.5px);
-            background-size: 24px 24px;
-            background-position: 0 0, 12px 12px;
+            background-image: radial-gradient(ellipse at 20% 0%, #5a2a5a 0%, #2e1a2e 50%, #1e0f1e 100%);
             background-attachment: fixed;
             transition: background 0.3s ease, color 0.3s ease;
         }
 
         .dark body {
             background-color: var(--bg);
-            background-image: 
-                radial-gradient(rgba(255,255,255,0.08) 1.5px, transparent 1.5px),
-                radial-gradient(rgba(255,255,255,0.08) 1.5px, transparent 1.5px);
+            background-image: radial-gradient(ellipse at 20% 0%, #5a2a5a 0%, #2e1a2e 50%, #1e0f1e 100%);
         }
 
         /* ─── TOP HEADER ───────────────────────── */
@@ -73,22 +74,23 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 76px;
-            background: var(--bg);
-            border-bottom: 3px solid var(--text);
+            height: 64px;
+            background: rgba(30, 12, 30, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(200,120,170,0.15);
             z-index: 500;
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 0 44px;
-            box-shadow: 0 4px 0px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 24px rgba(0,0,0,0.35);
             transition: all 0.3s ease;
         }
 
         .dark .top-header {
-            background: var(--bg);
-            border-bottom-color: var(--text);
-            box-shadow: 0 4px 0px rgba(255, 255, 255, 0.05);
+            background: rgba(30, 12, 30, 0.9);
+            border-bottom-color: rgba(200,120,170,0.15);
         }
 
         .header-brand {
@@ -97,18 +99,18 @@
         }
 
         .nav-brand-name {
-            font-family: 'Barlow Condensed', sans-serif;
-            font-size: 22px;
-            font-weight: 900;
-            color: var(--text);
+            font-family: 'Outfit', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--accent1);
             line-height: 1.1;
         }
 
         .nav-brand-sub {
-            font-size: 11px;
-            font-weight: 600;
+            font-size: 10px;
+            font-weight: 500;
             color: var(--muted);
-            letter-spacing: 2.5px;
+            letter-spacing: 2px;
             text-transform: uppercase;
             margin-top: 2px;
         }
@@ -127,38 +129,36 @@
 
         .nav-link {
             text-decoration: none;
-            font-size: 13.5px;
-            font-weight: 700;
+            font-size: 13px;
+            font-weight: 600;
             color: var(--muted);
-            transition: all 0.15s ease;
-            padding: 8px 14px;
-            border-radius: 0px;
-            border: 2px solid transparent;
+            transition: all 0.2s ease;
+            padding: 7px 16px;
+            border-radius: 50px;
+            border: 1px solid transparent;
         }
 
         .nav-link:hover, .nav-link.active {
             color: var(--text);
-            background: var(--bg);
-            border-color: var(--text);
-            box-shadow: 2px 2px 0px var(--text);
-            transform: translate(-1px, -1px);
+            background: rgba(200,120,170,0.15);
+            border-color: rgba(200,120,170,0.3);
         }
 
         .dark .nav-link:hover, .dark .nav-link.active {
-            background: var(--bg);
+            background: rgba(200,120,170,0.15);
             color: var(--text);
-            border-color: var(--text);
-            box-shadow: 2px 2px 0px var(--text);
+            border-color: rgba(200,120,170,0.3);
         }
 
         .nav-link.logout-link {
-            color: var(--text);
+            color: var(--muted);
+            border-color: rgba(200,120,170,0.25);
         }
         
         .nav-link.logout-link:hover {
-            background: var(--text);
-            color: var(--bg);
-            border-color: var(--text);
+            background: rgba(200,120,170,0.2);
+            color: var(--text);
+            border-color: rgba(200,120,170,0.4);
         }
 
         .theme-toggle {
@@ -250,17 +250,18 @@
         }
 
         .hero-name {
-            font-family: 'Barlow Condensed', sans-serif;
-            font-size: clamp(60px, 10vw, 118px);
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(42px, 8vw, 90px);
             font-weight: 900;
-            line-height: .88;
+            line-height: .92;
             letter-spacing: -1px;
             margin-bottom: 28px;
+            color: var(--accent1);
         }
 
         .hero-name .line1 {
             display: block;
-            color: var(--text);
+            color: var(--accent1);
         }
 
         .hero-name .line2 {
@@ -286,49 +287,53 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 13px 26px;
+            padding: 12px 24px;
             font-size: 13px;
             font-weight: 700;
             letter-spacing: .5px;
             text-decoration: none;
-            border-radius: 0px;
+            border-radius: 50px;
             cursor: pointer;
-            transition: transform 0.1s ease, box-shadow 0.1s ease;
-            font-family: 'DM Sans', sans-serif;
-            border: 3px solid var(--text);
-            box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--shadow-color);
-            background: var(--bg);
+            transition: all 0.2s ease;
+            font-family: 'Outfit', sans-serif;
+            border: 1px solid rgba(200,120,170,0.35);
+            background: rgba(200,120,170,0.18);
             color: var(--text);
         }
 
         .btn:hover {
-            transform: translate(-2px, -2px);
-            box-shadow: calc(var(--shadow-offset) + 2px) calc(var(--shadow-offset) + 2px) 0px var(--shadow-color);
+            background: rgba(200,120,170,0.28);
+            border-color: rgba(200,120,170,0.55);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.25);
         }
 
         .btn:active {
-            transform: translate(4px, 4px);
-            box-shadow: 0px 0px 0px var(--shadow-color);
+            transform: translateY(0);
         }
 
         .btn-primary {
-            background: var(--text);
-            color: var(--bg);
+            background: rgba(155,92,122,0.85);
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 6px 20px rgba(100,40,80,0.45);
         }
 
         .btn-primary:hover {
-            background: var(--text);
-            color: var(--bg);
+            background: rgba(176,106,142,0.9);
+            color: #fff;
         }
 
         .btn-ghost {
-            background: var(--bg);
-            color: var(--text);
+            background: transparent;
+            color: var(--muted);
+            border-color: rgba(200,120,170,0.2);
         }
 
         .btn-ghost:hover {
-            background: var(--bg);
+            background: rgba(200,120,170,0.12);
             color: var(--text);
+            border-color: rgba(200,120,170,0.35);
         }
 
         /* ─── CARDS SECTION ───────────────────── */
@@ -347,42 +352,42 @@
         }
 
         .section-heading {
-            font-family: 'Barlow Condensed', sans-serif;
-            font-size: clamp(36px, 5vw, 54px);
-            font-weight: 800;
-            color: var(--text);
-            letter-spacing: -.5px;
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(28px, 5vw, 44px);
+            font-weight: 900;
+            color: var(--accent1);
+            letter-spacing: 1px;
+            text-transform: uppercase;
             margin-bottom: 24px;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 14px;
+            grid-template-columns: 1fr;
+            gap: 12px;
         }
 
         .act-card {
             background: var(--card-bg);
-            border: 3px solid var(--card-border);
-            border-radius: 0px;
-            padding: 22px;
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 22px 26px;
             text-decoration: none;
             display: block;
-            box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--shadow-color);
-            transition: transform 0.15s ease, box-shadow 0.15s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s;
             cursor: pointer;
             position: relative;
         }
 
         .act-card:hover {
-            transform: translate(-3px, -3px);
-            box-shadow: calc(var(--shadow-offset) + 3px) calc(var(--shadow-offset) + 3px) 0px var(--shadow-color);
-            background: var(--card-bg);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border-color: rgba(200,120,170,0.5);
+            background: rgba(70,30,65,0.9);
         }
 
         .act-card:active {
-            transform: translate(4px, 4px);
-            box-shadow: 0px 0px 0px var(--shadow-color);
+            transform: translateY(0);
         }
 
         .act-card-label {
@@ -391,34 +396,35 @@
             color: var(--muted);
             letter-spacing: 2px;
             text-transform: uppercase;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
 
         .act-card-icon {
-            width: 38px;
-            height: 38px;
-            border-radius: 0px;
-            background: var(--bg);
-            border: 2px solid var(--text);
-            display: flex;
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            font-size: 14px;
+            gap: 5px;
+            background: var(--tag-bg);
+            border: 1px solid var(--tag-border);
+            border-radius: 50px;
+            padding: 4px 12px;
+            font-size: 11px;
             font-weight: 700;
             font-family: 'JetBrains Mono', monospace;
-            color: var(--text);
-            margin-bottom: 12px;
+            color: var(--accent1);
+            margin-bottom: 0;
         }
 
         .act-card-name {
-            font-size: 15px;
-            font-weight: 700;
-            color: var(--text);
-            margin-bottom: 5px;
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--accent1);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .act-card-desc {
-            font-size: 12px;
+            font-size: 13px;
             color: var(--muted);
             line-height: 1.5;
         }
@@ -426,7 +432,7 @@
         /* ─── ACTIVITY SECTION ────────────────── */
         .activity-section {
             padding: 72px 0;
-            border-top: 3px solid var(--text);
+            border-top: 1px solid rgba(200,120,170,0.2);
             scroll-margin-top: 20px;
             display: none;
         }
@@ -443,18 +449,18 @@
             font-family: 'JetBrains Mono', monospace;
             font-size: 11px;
             font-weight: 700;
-            color: var(--text);
+            color: var(--accent1);
             letter-spacing: 3px;
             text-transform: uppercase;
             margin-bottom: 6px;
         }
 
         .act-header h2 {
-            font-family: 'Barlow Condensed', sans-serif;
-            font-size: clamp(38px, 6vw, 62px);
-            font-weight: 800;
-            letter-spacing: -.5px;
-            color: var(--text);
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(32px, 6vw, 56px);
+            font-weight: 900;
+            letter-spacing: 0px;
+            color: var(--accent1);
             margin-bottom: 4px;
         }
 
@@ -471,10 +477,10 @@
 
         .exercise {
             background: var(--card-bg);
-            border: 3px solid var(--card-border);
-            border-radius: 0px;
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
             padding: 22px;
-            box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--shadow-color);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.25);
             scroll-margin-top: 80px;
         }
 
@@ -1145,7 +1151,7 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: rgba(124, 58, 237, .25);
+            background: rgba(200,120,170,0.3);
             border-radius: 3px;
         }
 
@@ -1391,7 +1397,7 @@
     <!-- ═══ TOP HEADER ═══════════════════════════ -->
     <header class="top-header">
         <div class="header-brand">
-            <div class="nav-brand-name">CRIZALDO NOZAL AJ</div>
+            <div class="nav-brand-name">JOYCE DELMORO</div>
             <div class="nav-brand-sub">Webdev Portfolio</div>
         </div>
         
@@ -1417,8 +1423,8 @@
         <section class="hero" id="hero">
             <div class="hero-pill">Web Dev Portfolio</div>
             <h1 class="hero-name">
-                <span class="line1">CRIZALDO NOZAL</span>
-                <span class="line2">AJ</span>
+                <span class="line1">JOYCE</span>
+                <span class="line2">DELMORO</span>
             </h1>
             <p class="hero-desc">Complete web system exercises — Activities 1–12 — showcasing HTML fundamentals, CSS design properties, Supabase database integration, and session management.</p>
         </section>
@@ -1535,14 +1541,14 @@
                                     onclick="copyCode(this)">⧉ Copy</button>
                             </div>
                             <pre><span class="tag">&lt;body&gt;</span>
-  <span class="tag">&lt;p&gt;</span>Crizaldo Nozal AJ<span class="tag">&lt;/p&gt;</span>
+  <span class="tag">&lt;p&gt;</span>JOYCE DELMORO<span class="tag">&lt;/p&gt;</span>
 <span class="tag">&lt;/body&gt;</span></pre>
                         </div>
                         <div class="panel-output">
                             <div class="out-header"><span class="out-header-label">▶ Output</span><button
                                     class="code-toggle-btn" onclick="toggleCode(this)"><span class="btn-icon">▷</span>
                                     View Code</button></div>
-                            <div class="out-body" style="font-size:22px;font-weight:700;">Crizaldo Nozal AJ</div>
+                            <div class="out-body" style="font-size:22px;font-weight:700;">JOYCE DELMORO</div>
                         </div>
                     </div>
                 </div>
@@ -1593,7 +1599,7 @@
                                     class="code-toggle-btn" onclick="toggleCode(this)"><span class="btn-icon">▷</span>
                                     View Code</button></div>
                             <div class="out-body">Browser tab title is set to <em
-                                    style="color:var(--accent1);font-style:normal;font-weight:600;">"Crizaldo Nozal
+                                    style="color:var(--accent1);font-style:normal;font-weight:600;">"JOYCE
                                     AJ | WebDev Portfolio"</em></div>
                         </div>
                     </div>
@@ -1702,13 +1708,13 @@
                                         class="code-header-label">⌨ Code</span></div><button class="copy-btn"
                                     onclick="copyCode(this)">⧉ Copy</button>
                             </div>
-                            <pre><span class="tag">&lt;p</span> <span class="attr">style=</span><span class="val">"color:green"</span><span class="tag">&gt;</span>Crizaldo Nozal AJ<span class="tag">&lt;/p&gt;</span></pre>
+                            <pre><span class="tag">&lt;p</span> <span class="attr">style=</span><span class="val">"color:green"</span><span class="tag">&gt;</span>JOYCE DELMORO<span class="tag">&lt;/p&gt;</span></pre>
                         </div>
                         <div class="panel-output">
                             <div class="out-header"><span class="out-header-label">▶ Output</span><button
                                     class="code-toggle-btn" onclick="toggleCode(this)"><span class="btn-icon">▷</span>
                                     View Code</button></div>
-                            <div class="out-body"><span class="name-green">Crizaldo Nozal AJ</span></div>
+                            <div class="out-body"><span class="name-green">JOYCE DELMORO</span></div>
                         </div>
                     </div>
                 </div>
@@ -1759,13 +1765,13 @@
                                         class="code-header-label">⌨ Code</span></div><button class="copy-btn"
                                     onclick="copyCode(this)">⧉ Copy</button>
                             </div>
-                            <pre><span class="tag">&lt;p</span> <span class="attr">style=</span><span class="val">"font-family:Tahoma"</span><span class="tag">&gt;</span>Crizaldo Nozal AJ<span class="tag">&lt;/p&gt;</span></pre>
+                            <pre><span class="tag">&lt;p</span> <span class="attr">style=</span><span class="val">"font-family:Tahoma"</span><span class="tag">&gt;</span>JOYCE DELMORO<span class="tag">&lt;/p&gt;</span></pre>
                         </div>
                         <div class="panel-output">
                             <div class="out-header"><span class="out-header-label">▶ Output</span><button
                                     class="code-toggle-btn" onclick="toggleCode(this)"><span class="btn-icon">▷</span>
                                     View Code</button></div>
-                            <div class="out-body"><span class="name-tahoma">Crizaldo Nozal AJ</span></div>
+                            <div class="out-body"><span class="name-tahoma">JOYCE DELMORO</span></div>
                         </div>
                     </div>
                 </div>
@@ -1819,7 +1825,7 @@
                                     onclick="copyCode(this)">⧉ Copy</button>
                             </div>
                             <pre><span class="tag">&lt;em&gt;</span>The Shinobi Chronicles<span class="tag">&lt;/em&gt;</span> by
-<span class="tag">&lt;u&gt;</span>Crizaldo Nozal AJ<span class="tag">&lt;/u&gt;</span> is a
+<span class="tag">&lt;u&gt;</span>JOYCE DELMORO<span class="tag">&lt;/u&gt;</span> is a
 <span class="tag">&lt;b&gt;&lt;i&gt;</span>profound<span class="tag">&lt;/i&gt;&lt;/b&gt;</span> tale...</pre>
                         </div>
                         <div class="panel-output">
@@ -1827,7 +1833,7 @@
                                     class="code-toggle-btn" onclick="toggleCode(this)"><span class="btn-icon">▷</span>
                                     View Code</button></div>
                             <div class="out-body book-desc"><em>The Shinobi Chronicles</em> by <span
-                                    class="underline">Crizaldo Nozal AJ</span> is a <em>profound</em> and <em>epic</em> tale
+                                    class="underline">JOYCE DELMORO</span> is a <em>profound</em> and <em>epic</em> tale
                                 set in the <em>hidden ninja villages</em> during the Warring States Period.</div>
                         </div>
                     </div>
@@ -1848,20 +1854,20 @@
                             </div>
                             <pre><span class="tag">&lt;h1&gt;</span>B<span class="tag">&lt;/h1&gt;&lt;h2&gt;</span>A<span class="tag">&lt;/h2&gt;&lt;h3&gt;</span>R<span class="tag">&lt;/h3&gt;</span>
 <span class="tag">&lt;h4&gt;</span>A<span class="tag">&lt;/h4&gt;&lt;h5&gt;</span>D<span class="tag">&lt;/h5&gt;&lt;h6&gt;</span>I<span class="tag">&lt;/h6&gt;</span>
-<span class="cmt">&lt;!-- same for CRIZALDO NOZAL --&gt;</span></pre>
+<span class="cmt">&lt;!-- same for JOYCE --&gt;</span></pre>
                         </div>
                         <div class="panel-output">
                             <div class="out-header"><span class="out-header-label">▶ Output</span><button
                                     class="code-toggle-btn" onclick="toggleCode(this)"><span class="btn-icon">▷</span>
                                     View Code</button></div>
                             <div class="out-body">
-                                <div class="heading-name"><span style="font-size:36px">C</span><span
-                                        style="font-size:30px">R</span><span style="font-size:24px">I</span><span
-                                        style="font-size:20px">Z</span><span style="font-size:16px">A</span><span
-                                        style="font-size:13px">L</span><span style="font-size:11px">D</span><span
-                                        style="font-size:10px">O</span>&nbsp;<span style="font-size:36px">N</span><span
-                                        style="font-size:30px">O</span><span style="font-size:24px">Z</span><span
-                                        style="font-size:20px">A</span><span style="font-size:16px">L</span></div>
+                                <div class="heading-name"><span style="font-size:36px">J</span><span
+                                        style="font-size:30px">O</span><span style="font-size:24px">Y</span><span
+                                        style="font-size:20px">C</span><span style="font-size:16px">E</span>&nbsp;<span
+                                        style="font-size:36px">D</span><span style="font-size:30px">E</span><span
+                                        style="font-size:24px">L</span><span style="font-size:20px">M</span><span
+                                        style="font-size:16px">O</span><span style="font-size:13px">R</span><span
+                                        style="font-size:11px">O</span></div>
                             </div>
                         </div>
                     </div>
@@ -2238,7 +2244,7 @@
                                     onclick="copyCode(this)">⧉ Copy</button>
                             </div>
                             <pre><span class="tag">&lt;address&gt;</span>
-  <span class="tag">&lt;b&gt;</span>Crizaldo Nozal AJ<span class="tag">&lt;/b&gt;</span>&lt;br&gt;
+  <span class="tag">&lt;b&gt;</span>JOYCE DELMORO<span class="tag">&lt;/b&gt;</span>&lt;br&gt;
   123 Developer Street, Philippines
 <span class="tag">&lt;/address&gt;</span></pre>
                         </div>
@@ -2249,7 +2255,7 @@
                             <div class="out-body">
                                 <div class="address-grid">
                                     <div class="addr-card">
-                                        <div class="addr-label">Sender</div><strong>Crizaldo Nozal AJ</strong><br>123
+                                        <div class="addr-label">Sender</div><strong>JOYCE DELMORO</strong><br>123
                                         Developer Street<br>Code City, CC 90210<br>Philippines
                                     </div>
                                     <div class="addr-card" style="text-align:center;">

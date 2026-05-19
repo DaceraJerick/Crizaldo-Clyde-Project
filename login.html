@@ -3,210 +3,298 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | Crizaldo Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Login | Joyce Delmoro Portfolio</title>
+    <meta name="description" content="Sign in to Joyce Delmoro's Web Development Portfolio.">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         :root {
-            --bg: #000000;
-            --text: #ffffff;
-            --muted: #a1a1aa;
-            --accent1: #ffffff;
-            --accent2: #f4f4f5;
-            --card-bg: #000000;
-            --card-border: #ffffff;
-            --shadow-color: #ffffff;
-            --shadow-offset: 6px;
+            --bg:            #3b1f3b;
+            --bg-card:       #2d1a2e;
+            --bg-input:      #241524;
+            --accent:        #e87eb8;
+            --accent-btn:    #9b5c7a;
+            --accent-hover:  #b06a8e;
+            --text:          #f0d0e8;
+            --muted:         #c099b8;
+            --border:        rgba(200, 120, 170, 0.25);
+            --border-input:  rgba(200, 120, 170, 0.35);
+            --shadow:        rgba(0,0,0,0.5);
+            --tab-active-bg: #7a3f5f;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            font-family: 'DM Sans', sans-serif;
-            background-color: var(--bg);
-            background-image: 
-                radial-gradient(rgba(255,255,255,0.08) 1.5px, transparent 1.5px),
-                radial-gradient(rgba(255,255,255,0.08) 1.5px, transparent 1.5px);
-            background-size: 24px 24px;
-            background-position: 0 0, 12px 12px;
-            background-attachment: fixed;
+            font-family: 'Outfit', sans-serif;
+            background: radial-gradient(ellipse at 30% 30%, #6b2f6b 0%, #3b1f3b 40%, #2a142a 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--text);
             padding: 20px;
         }
 
         .auth-container {
             width: 100%;
             max-width: 420px;
-            background: var(--card-bg);
-            border: 3px solid var(--card-border);
-            border-radius: 0px;
-            padding: 40px;
-            box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--shadow-color);
+            background: var(--bg-card);
+            border-radius: 24px;
+            padding: 44px 36px 36px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(200,120,170,0.12);
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        .logo {
-            font-family: 'Barlow Condensed', sans-serif;
-            font-size: 32px;
-            font-weight: 900;
-            line-height: 1;
-            margin-bottom: 8px;
-            letter-spacing: 1px;
+        .auth-container::before {
+            content: '';
+            position: absolute;
+            top: -60px; left: -60px;
+            width: 200px; height: 200px;
+            background: radial-gradient(circle, rgba(180,80,150,0.18) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        /* Logo */
+        .logo-name {
+            font-size: 38px;
+            font-weight: 800;
+            color: var(--accent);
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+            margin-bottom: 6px;
         }
 
         .logo-sub {
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--muted);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 32px;
-        }
-
-        h2 {
-            font-family: 'Barlow Condensed', sans-serif;
-            font-size: 28px;
-            margin-bottom: 8px;
-            font-weight: 800;
-            text-transform: uppercase;
-        }
-
-        p.subtitle {
             font-size: 14px;
+            font-weight: 400;
             color: var(--muted);
             margin-bottom: 32px;
+            letter-spacing: 0.3px;
         }
 
+        /* Tab Toggle */
+        .tab-toggle {
+            display: flex;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50px;
+            padding: 4px;
+            margin-bottom: 28px;
+            position: relative;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 10px 0;
+            border: none;
+            background: transparent;
+            color: var(--muted);
+            font-family: 'Outfit', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tab-btn.active {
+            background: var(--tab-active-bg);
+            color: var(--text);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        /* Form */
         .form-group {
             text-align: left;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
-        label {
-            display: block;
+        .form-label {
+            display: flex;
+            align-items: center;
+            gap: 7px;
             font-size: 13px;
-            font-weight: 700;
+            font-weight: 600;
+            color: var(--muted);
             margin-bottom: 8px;
-            color: var(--text);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
-        input {
+        .form-label .icon {
+            font-size: 14px;
+        }
+
+        input[type="email"],
+        input[type="password"],
+        input[type="text"] {
             width: 100%;
-            padding: 12px 16px;
-            border-radius: 0px;
-            border: 3px solid var(--text);
-            background: var(--bg);
+            padding: 13px 16px;
+            background: var(--bg-input);
+            border: 1.5px solid var(--border-input);
+            border-radius: 12px;
             color: var(--text);
-            font-family: inherit;
+            font-family: 'Outfit', sans-serif;
             font-size: 15px;
-            font-weight: 600;
-            transition: all 0.15s;
-            box-shadow: 3px 3px 0px var(--text);
+            font-weight: 400;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            outline: none;
+        }
+
+        input::placeholder {
+            color: rgba(180,130,160,0.5);
         }
 
         input:focus {
-            outline: none;
-            background: var(--bg);
-            transform: translate(-1px, -1px);
-            box-shadow: 4px 4px 0px var(--text);
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(232,126,184,0.12);
         }
 
-        .btn {
+        .btn-submit {
             width: 100%;
-            padding: 14px;
-            border-radius: 0px;
-            border: 3px solid var(--text);
-            font-family: inherit;
+            padding: 15px;
+            background: var(--accent-btn);
+            border: none;
+            border-radius: 50px;
+            color: #fff;
+            font-family: 'Outfit', sans-serif;
             font-size: 15px;
             font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
             cursor: pointer;
-            transition: transform 0.1s ease, box-shadow 0.1s ease;
-            margin-bottom: 16px;
-            box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--shadow-color);
-            background: var(--text);
-            color: var(--bg);
+            transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+            margin-top: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 6px 20px rgba(130,50,90,0.5);
         }
 
-        .btn:hover {
-            transform: translate(-2px, -2px);
-            box-shadow: calc(var(--shadow-offset) + 2px) calc(var(--shadow-offset) + 2px) 0px var(--shadow-color);
+        .btn-submit:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 10px 28px rgba(130,50,90,0.6);
         }
 
-        .btn:active {
-            transform: translate(4px, 4px);
-            box-shadow: 0px 0px 0px var(--shadow-color);
+        .btn-submit:active {
+            transform: translateY(0);
         }
 
-        .toggle-auth {
-            font-size: 14px;
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* Error / Success */
+        #errorMessage {
+            color: #f87171;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 14px;
+            display: none;
+            text-align: left;
+        }
+
+        #successMessage {
+            color: #86efac;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 14px;
+            display: none;
+            text-align: left;
+        }
+
+        /* Demo box */
+        .demo-box {
+            margin-top: 4px;
+            padding: 16px 18px;
+            background: rgba(255,255,255,0.04);
+            border: 1px dashed rgba(200,120,170,0.3);
+            border-radius: 14px;
+            font-size: 13px;
             color: var(--muted);
+            text-align: center;
+        }
+
+        .demo-box-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .demo-box p {
+            margin: 4px 0;
+            font-size: 13px;
+        }
+
+        .demo-box strong {
+            color: var(--text);
             font-weight: 600;
         }
 
-        .toggle-auth span {
-            color: var(--text);
+        /* Toggle link */
+        .toggle-link {
+            font-size: 13.5px;
+            color: var(--muted);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .toggle-link span {
+            color: var(--accent);
             font-weight: 700;
-            text-decoration: underline;
             cursor: pointer;
+            text-decoration: underline;
+            text-underline-offset: 2px;
         }
 
-        #errorMessage {
-            color: #ef4444;
-            font-weight: 700;
-            font-size: 13px;
-            margin-bottom: 16px;
-            display: none;
-        }
+        /* Confirm field hidden by default */
+        #confirmGroup { display: none; }
 
-        .loading {
-            opacity: 0.7;
-            pointer-events: none;
-        }
+        .loading { opacity: 0.7; pointer-events: none; }
     </style>
 </head>
 <body>
     <div class="auth-container">
-        <div class="logo">CRIZALDO</div>
-        <div class="logo-sub">Webdev Portfolio</div>
-        
-        <h2 id="authTitle">Welcome Back</h2>
-        <p class="subtitle" id="authSubtitle">Please enter your details to sign in.</p>
+        <div class="logo-name">Joyce Delmoro</div>
+        <div class="logo-sub">Web Development Portfolio</div>
+
+        <!-- Tab Toggle -->
+        <div class="tab-toggle">
+            <button class="tab-btn active" id="tabLogin" onclick="setMode(false)">Login</button>
+            <button class="tab-btn" id="tabSignup" onclick="setMode(true)">Sign Up</button>
+        </div>
 
         <div id="errorMessage"></div>
-        <div id="successMessage" style="color: #22c55e; font-size: 13px; margin-bottom: 16px; display: none;"></div>
+        <div id="successMessage"></div>
 
         <form id="authForm">
             <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" placeholder="name@example.com" required>
+                <div class="form-label"><span class="icon">✉</span> Email</div>
+                <input type="email" id="email" placeholder="demo@example.com" required>
             </div>
             <div class="form-group">
-                <label for="password">Password</label>
+                <div class="form-label"><span class="icon">🔒</span> Password</div>
                 <input type="password" id="password" placeholder="••••••••" required minlength="6">
             </div>
-            <div class="form-group" id="confirmGroup" style="display: none;">
-                <label for="confirmPassword">Confirm Password</label>
+            <div class="form-group" id="confirmGroup">
+                <div class="form-label"><span class="icon">🔒</span> Confirm Password</div>
                 <input type="password" id="confirmPassword" placeholder="••••••••">
             </div>
-            <button type="submit" class="btn btn-primary" id="submitBtn">Sign In</button>
+
+            <button type="submit" class="btn-submit" id="submitBtn">LOGIN</button>
         </form>
 
-        <div class="toggle-auth" id="toggleAuth" style="margin-top: 20px;">
-            Don't have an account? <span onclick="toggleMode()" style="text-decoration: underline; font-weight: 700;">Sign Up</span>
+        <div class="demo-box" id="demoBox">
+            <div class="demo-box-title">ℹ Demo Account:</div>
+            <p>Email: <strong>demo@example.com</strong></p>
+            <p>Password: <strong>demo123</strong></p>
         </div>
-
-        <div id="demoBox" style="margin-top: 24px; text-align: center; font-size: 13.5px; color: var(--muted); padding: 14px; background: rgba(16, 185, 129, 0.08); border-radius: 10px; border: 1px dashed rgba(16, 185, 129, 0.3);">
-            <strong style="color: var(--text);">Demo Login</strong><br>
-            <div style="margin-top: 6px;">Email: <strong>username@gmail.com</strong></div>
-            <div>Password: <strong>password</strong></div>
-        </div>
-
     </div>
 
     <script type="module">
@@ -214,52 +302,48 @@
 
         let isSignUp = false;
 
-        const form = document.getElementById('authForm');
-        const submitBtn = document.getElementById('submitBtn');
-        const errorDiv = document.getElementById('errorMessage');
+        const form       = document.getElementById('authForm');
+        const submitBtn  = document.getElementById('submitBtn');
+        const errorDiv   = document.getElementById('errorMessage');
         const successDiv = document.getElementById('successMessage');
-        const authTitle = document.getElementById('authTitle');
-        const authSubtitle = document.getElementById('authSubtitle');
-        const toggleAuthDiv = document.getElementById('toggleAuth');
-        const confirmGroup = document.getElementById('confirmGroup');
-        const confirmInput = document.getElementById('confirmPassword');
-        const demoBox = document.getElementById('demoBox');
+        const confirmGrp = document.getElementById('confirmGroup');
+        const confirmInp = document.getElementById('confirmPassword');
+        const demoBox    = document.getElementById('demoBox');
+        const tabLogin   = document.getElementById('tabLogin');
+        const tabSignup  = document.getElementById('tabSignup');
 
-        window.toggleMode = function () {
-            isSignUp = !isSignUp;
+        window.setMode = function (signup) {
+            isSignUp = signup;
             errorDiv.style.display = 'none';
             successDiv.style.display = 'none';
 
-            if (isSignUp) {
-                authTitle.textContent = 'Create Account';
-                authSubtitle.textContent = 'Sign up to get your own portfolio session.';
-                submitBtn.textContent = 'Sign Up';
-                toggleAuthDiv.innerHTML = 'Already have an account? <span onclick="toggleMode()" style="text-decoration: underline; font-weight: 700;">Sign In</span>';
-                confirmGroup.style.display = 'block';
-                confirmInput.required = true;
+            if (signup) {
+                tabSignup.classList.add('active');
+                tabLogin.classList.remove('active');
+                submitBtn.textContent = 'SIGN UP';
+                confirmGrp.style.display = 'block';
+                confirmInp.required = true;
                 demoBox.style.display = 'none';
             } else {
-                authTitle.textContent = 'Welcome Back';
-                authSubtitle.textContent = 'Please enter your details to sign in.';
-                submitBtn.textContent = 'Sign In';
-                toggleAuthDiv.innerHTML = 'Don\'t have an account? <span onclick="toggleMode()" style="text-decoration: underline; font-weight: 700;">Sign Up</span>';
-                confirmGroup.style.display = 'none';
-                confirmInput.required = false;
+                tabLogin.classList.add('active');
+                tabSignup.classList.remove('active');
+                submitBtn.textContent = 'LOGIN';
+                confirmGrp.style.display = 'none';
+                confirmInp.required = false;
                 demoBox.style.display = 'block';
             }
         };
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const email = document.getElementById('email').value;
+            const email    = document.getElementById('email').value;
             const password = document.getElementById('password').value;
 
             errorDiv.style.display = 'none';
             successDiv.style.display = 'none';
 
             if (isSignUp) {
-                const confirm = confirmInput.value;
-                if (password !== confirm) {
+                if (password !== confirmInp.value) {
                     errorDiv.textContent = 'Passwords do not match.';
                     errorDiv.style.display = 'block';
                     return;
@@ -270,58 +354,51 @@
                     return;
                 }
 
-                submitBtn.classList.add('loading');
-                submitBtn.textContent = 'Creating Account...';
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Creating Account…';
 
                 try {
                     const { data, error } = await auth.signUp(email, password);
-
                     if (error) {
                         errorDiv.textContent = error.message;
                         errorDiv.style.display = 'block';
                     } else {
-                        successDiv.textContent = '✓ Account created! Signing you in...';
+                        successDiv.textContent = '✓ Account created! Signing you in…';
                         successDiv.style.display = 'block';
-
-                        const { data: loginData, error: loginError } = await auth.signIn(email, password);
-                        if (loginError) {
-                            successDiv.textContent = '✓ Account created! Please sign in.';
-                            toggleMode();
-                        } else {
-                            window.location.href = 'index.html';
-                        }
+                        const { error: loginError } = await auth.signIn(email, password);
+                        if (loginError) { setMode(false); }
+                        else { window.location.href = 'index.html'; }
                     }
-                } catch (err) {
+                } catch {
                     errorDiv.textContent = 'An unexpected error occurred.';
                     errorDiv.style.display = 'block';
                 } finally {
-                    submitBtn.classList.remove('loading');
-                    submitBtn.textContent = 'Sign Up';
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'SIGN UP';
                 }
             } else {
-                submitBtn.classList.add('loading');
-                submitBtn.textContent = 'Signing In...';
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Signing In…';
 
                 try {
-                    const { data, error } = await auth.signIn(email, password);
-
+                    const { error } = await auth.signIn(email, password);
                     if (error) {
                         errorDiv.textContent = error.message;
                         errorDiv.style.display = 'block';
                     } else {
                         window.location.href = 'index.html';
                     }
-                } catch (err) {
+                } catch {
                     errorDiv.textContent = 'An unexpected error occurred.';
                     errorDiv.style.display = 'block';
                 } finally {
-                    submitBtn.classList.remove('loading');
-                    submitBtn.textContent = 'Sign In';
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'LOGIN';
                 }
             }
         });
 
-        // Check if already logged in
+        // Auto-redirect if already logged in
         auth.getSession().then(({ session }) => {
             if (session) window.location.href = 'index.html';
         });
