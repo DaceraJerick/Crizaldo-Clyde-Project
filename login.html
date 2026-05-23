@@ -11,15 +11,15 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         :root {
-            --bg: #000000;
-            --text: #ffffff;
-            --muted: #a1a1aa;
-            --accent1: #ffffff;
-            --accent2: #f4f4f5;
-            --card-bg: #000000;
-            --card-border: #ffffff;
-            --shadow-color: #ffffff;
-            --shadow-offset: 6px;
+            --bg: #0f172a;
+            --text: #f8fafc;
+            --muted: #94a3b8;
+            --accent1: #38bdf8;
+            --accent2: #0284c7;
+            --card-bg: #111827;
+            --card-border: #334155;
+            --shadow-color: rgba(0, 0, 0, 0.45);
+            --shadow-offset: 16px;
         }
 
         * {
@@ -28,146 +28,187 @@
             padding: 0;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'DM Sans', sans-serif;
+            font-family: 'Outfit', sans-serif;
+            min-height: 100vh;
             background-color: var(--bg);
             background-image:
                 radial-gradient(rgba(255, 255, 255, 0.08) 1.5px, transparent 1.5px),
-                radial-gradient(rgba(255, 255, 255, 0.08) 1.5px, transparent 1.5px);
+                radial-gradient(rgba(255, 255, 255, 0.08) 1.5px, transparent 1.5px),
+                linear-gradient(135deg, #0f172a 0%, #020617 100%);
             background-size: 24px 24px;
             background-position: 0 0, 12px 12px;
             background-attachment: fixed;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             color: var(--text);
-            padding: 20px;
+            display: grid;
+            place-items: center;
+            padding: 36px;
         }
 
         .auth-container {
             width: 100%;
-            max-width: 420px;
-            background: var(--card-bg);
-            border: 3px solid var(--card-border);
-            border-radius: 0px;
-            padding: 40px;
-            box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--shadow-color);
+            max-width: 460px;
+            background: rgba(30, 41, 59, 0.96);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 42px 36px;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
             text-align: center;
         }
 
         .logo {
-            font-family: 'Barlow Condensed', sans-serif;
-            font-size: 32px;
-            font-weight: 900;
-            line-height: 1;
-            margin-bottom: 8px;
-            letter-spacing: 1px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            margin-bottom: 6px;
+            color: var(--accent1);
         }
 
         .logo-sub {
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 700;
             color: var(--muted);
             letter-spacing: 2px;
             text-transform: uppercase;
-            margin-bottom: 32px;
+            margin-bottom: 28px;
         }
 
         h2 {
-            font-family: 'Barlow Condensed', sans-serif;
-            font-size: 28px;
-            margin-bottom: 8px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 30px;
+            margin-bottom: 10px;
             font-weight: 800;
+            letter-spacing: 0.04em;
             text-transform: uppercase;
         }
 
         p.subtitle {
-            font-size: 14px;
+            font-size: 15px;
             color: var(--muted);
             margin-bottom: 32px;
+            line-height: 1.7;
         }
 
         .form-group {
             text-align: left;
-            margin-bottom: 20px;
+            margin-bottom: 22px;
         }
 
         label {
             display: block;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 700;
             margin-bottom: 8px;
             color: var(--text);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.12em;
         }
 
         input {
             width: 100%;
-            padding: 12px 16px;
-            border-radius: 0px;
-            border: 3px solid var(--text);
-            background: var(--bg);
+            padding: 16px 18px;
+            border-radius: 16px;
+            border: 1px solid rgba(148, 163, 184, 0.25);
+            background: rgba(15, 23, 42, 0.9);
             color: var(--text);
             font-family: inherit;
             font-size: 15px;
-            font-weight: 600;
-            transition: all 0.15s;
-            box-shadow: 3px 3px 0px var(--text);
+            font-weight: 500;
+            transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         input:focus {
             outline: none;
-            background: var(--bg);
-            transform: translate(-1px, -1px);
-            box-shadow: 4px 4px 0px var(--text);
+            border-color: var(--accent1);
+            box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.12);
+            transform: translateY(-1px);
         }
 
         .btn {
             width: 100%;
-            padding: 14px;
-            border-radius: 0px;
-            border: 3px solid var(--text);
+            padding: 16px;
+            border-radius: 18px;
+            border: none;
             font-family: inherit;
             font-size: 15px;
-            font-weight: 700;
+            font-weight: 800;
             cursor: pointer;
-            transition: transform 0.1s ease, box-shadow 0.1s ease;
-            margin-bottom: 16px;
-            box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--shadow-color);
-            background: var(--text);
+            transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+            margin-bottom: 18px;
+            box-shadow: 0 18px 36px rgba(0, 0, 0, 0.22);
+            background: linear-gradient(135deg, var(--accent1), var(--accent2));
             color: var(--bg);
         }
 
         .btn:hover {
-            transform: translate(-2px, -2px);
-            box-shadow: calc(var(--shadow-offset) + 2px) calc(var(--shadow-offset) + 2px) 0px var(--shadow-color);
+            transform: translateY(-2px);
+            box-shadow: 0 22px 42px rgba(0, 0, 0, 0.28);
         }
 
         .btn:active {
-            transform: translate(4px, 4px);
-            box-shadow: 0px 0px 0px var(--shadow-color);
+            transform: translateY(1px);
+            box-shadow: 0 10px 18px rgba(0, 0, 0, 0.2);
         }
 
         .toggle-auth {
             font-size: 14px;
             color: var(--muted);
             font-weight: 600;
+            line-height: 1.8;
+            margin-top: 20px;
         }
 
-        .toggle-auth span {
-            color: var(--text);
-            font-weight: 700;
+        .toggle-auth span,
+        .toggle-action {
+            color: var(--accent1);
             text-decoration: underline;
             cursor: pointer;
+            font-weight: 700;
         }
 
         #errorMessage {
-            color: #ef4444;
+            color: #f87171;
             font-weight: 700;
             font-size: 13px;
             margin-bottom: 16px;
+            display: none;
+            text-align: left;
+        }
+
+        .success-message {
+            color: #22c55e;
+            font-size: 13px;
+            margin-bottom: 16px;
+            display: none;
+            text-align: left;
+        }
+
+        .demo-box {
+            margin-top: 26px;
+            padding: 18px 20px;
+            background: rgba(56, 189, 248, 0.08);
+            border: 1px solid rgba(56, 189, 248, 0.18);
+            border-radius: 16px;
+            color: var(--muted);
+            text-align: left;
+            font-size: 13.5px;
+            line-height: 1.6;
+        }
+
+        .demo-box strong {
+            color: var(--text);
+        }
+
+        .demo-detail {
+            margin-top: 6px;
+        }
+
+        .hidden {
             display: none;
         }
 
@@ -187,7 +228,7 @@
         <p class="subtitle" id="authSubtitle">Please enter your details to sign in.</p>
 
         <div id="errorMessage"></div>
-        <div id="successMessage" style="color: #22c55e; font-size: 13px; margin-bottom: 16px; display: none;"></div>
+        <div id="successMessage" class="success-message"></div>
 
         <form id="authForm">
             <div class="form-group">
@@ -198,22 +239,20 @@
                 <label for="password">Password</label>
                 <input type="password" id="password" placeholder="••••••••" required minlength="6">
             </div>
-            <div class="form-group" id="confirmGroup" style="display: none;">
+            <div class="form-group hidden" id="confirmGroup">
                 <label for="confirmPassword">Confirm Password</label>
                 <input type="password" id="confirmPassword" placeholder="••••••••">
             </div>
             <button type="submit" class="btn btn-primary" id="submitBtn">Sign In</button>
         </form>
 
-        <div class="toggle-auth" id="toggleAuth" style="margin-top: 20px;">
-            Don't have an account? <span onclick="toggleMode()"
-                style="text-decoration: underline; font-weight: 700;">Sign Up</span>
+        <div class="toggle-auth" id="toggleAuth">
+            Don't have an account? <span onclick="toggleMode()">Sign Up</span>
         </div>
 
-        <div id="demoBox"
-            style="margin-top: 24px; text-align: center; font-size: 13.5px; color: var(--muted); padding: 14px; background: rgba(16, 185, 129, 0.08); border-radius: 10px; border: 1px dashed rgba(16, 185, 129, 0.3);">
-            <strong style="color: var(--text);">Demo Login</strong><br>
-            <div style="margin-top: 6px;">Email: <strong>username@gmail.com</strong></div>
+        <div id="demoBox" class="demo-box">
+            <strong>Demo Login</strong><br>
+            <div class="demo-detail">Email: <strong>username@gmail.com</strong></div>
             <div>Password: <strong>password</strong></div>
         </div>
 
@@ -244,7 +283,7 @@
                 authTitle.textContent = 'Create Account';
                 authSubtitle.textContent = 'Sign up to get your own portfolio session.';
                 submitBtn.textContent = 'Sign Up';
-                toggleAuthDiv.innerHTML = 'Already have an account? <span onclick="toggleMode()" style="text-decoration: underline; font-weight: 700;">Sign In</span>';
+                toggleAuthDiv.innerHTML = 'Already have an account? <span class="toggle-action" onclick="toggleMode()">Sign In</span>';
                 confirmGroup.style.display = 'block';
                 confirmInput.required = true;
                 demoBox.style.display = 'none';
@@ -252,7 +291,7 @@
                 authTitle.textContent = 'Welcome Back';
                 authSubtitle.textContent = 'Please enter your details to sign in.';
                 submitBtn.textContent = 'Sign In';
-                toggleAuthDiv.innerHTML = 'Don\'t have an account? <span onclick="toggleMode()" style="text-decoration: underline; font-weight: 700;">Sign Up</span>';
+                toggleAuthDiv.innerHTML = 'Don\'t have an account? <span class="toggle-action" onclick="toggleMode()">Sign Up</span>';
                 confirmGroup.style.display = 'none';
                 confirmInput.required = false;
                 demoBox.style.display = 'block';
